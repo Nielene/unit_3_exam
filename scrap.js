@@ -28,4 +28,22 @@ const editPost = (req, res, next) => {
     next();
   })
 }
-//================
+//================Reed: ==========
+const allLikesForPost = (req, res, next) => {
+  const postId = Number(req.params.id);
+  db.any('SELECT * FROM likes WHERE post_id = ${id}', {
+    id: postId
+  })
+  .then(likes => {
+    res.status(200).json({
+      status: 'success',
+      data: likes,
+      message: 'retrieved all likes for post'
+    });
+  }).catch(err => {
+    console.log(err);
+    next();
+  })
+}
+
+//========================

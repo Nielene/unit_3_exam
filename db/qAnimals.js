@@ -13,7 +13,7 @@ const getAllAnimals = (req, res, next) => {
     res.status(400)
     .json({
       status: 'error',
-      message: "🤣 Na nana na nah. You didn't get your Animals!😝"
+      message: " 🤣 Na nana na nah. You didn't get your Animals!😝 "
     })
     console.log(err);
     next();
@@ -35,7 +35,7 @@ const getSingleAnimal = (req, res, next) => {
     res.status(400)
     .json({
       status: 'error',
-      message: "🤣 Na nana na nah. You didn't get your Animal!😝"
+      message: "🤣 Na nana na nah. You didn't get your Animal!😝 "
     })
     console.log(err);
     next();
