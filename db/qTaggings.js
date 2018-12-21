@@ -47,7 +47,7 @@ const getSingleTagging = (req, res, next) => {
 // get  '/researchers/:id'   animal_id, researcher_id
 const getAllTaggingsBySingleResearcher = (req, res, next) => {
   let researcherId = parseInt(req.params.id);
-  db.any('SELECT * FROM taggings WHERE researcher_id = ${id}', {
+  db.any('SELECT taggings.*, researchers.* FROM taggings JOIN researchers ON taggings.researcher_id = researchers.id WHERE researcher_id = ${id}', {
     id: researcherId
   }).then ((data) => {
     res.status(200)
@@ -72,7 +72,7 @@ const getAllTaggingsBySingleResearcher = (req, res, next) => {
 // get  '/animals/:id'   animal_id, researcher_id
 const getAllTaggingsOnSingleAnimal = (req, res, next) => {
   let animalId = parseInt(req.params.id);
-  db.any('SELECT * FROM taggings WHERE animal_id = ${id}', {
+  db.any('SELECT taggings.*, animals.* FROM taggings JOIN animals ON taggings.animal_id = animals.id WHERE animal_id = ${id}', {
     id: animalId
   }).then ((data) => {
     res.status(200)

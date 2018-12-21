@@ -49,7 +49,7 @@ const getAllSightingsOfSingleSpecies = (req, res, next) => {
 // get  '/researchers/:id'   researcher_id, species_id, habitat_id
 const getAllSightingsForSingleResearcher = (req, res, next) => {
   let researcherId = parseInt(req.params.id);
-  db.any('SELECT * FROM sightings WHERE researcher_id = ${id}', {
+  db.any('SELECT sightings.*, researchers.* FROM sightings JOIN researchers ON sightings.researcher_id = researchers.id WHERE researcher_id = ${id}', {
     id: researcherId
   }).then ((data) => {
     res.status(200)
@@ -73,7 +73,7 @@ const getAllSightingsForSingleResearcher = (req, res, next) => {
 // get  '/habitats/:id'   researcher_id, species_id, habitat_id
 const getAllSightingsForSingleHabitat = (req, res, next) => {
   let habitatId = parseInt(req.params.id);
-  db.any('SELECT * FROM sightings WHERE habitat_id = ${id}', {
+  db.any('SELECT sightings.*, habitats.* FROM sightings JOIN habitats ON sightings.habitat_id = habitats.id  WHERE habitat_id = ${id}', {
     id: habitatId
   }).then ((data) => {
     res.status(200)

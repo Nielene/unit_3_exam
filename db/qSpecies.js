@@ -1,6 +1,6 @@
 const {db} = require('./index.js');
 
-// get /
+// get /    name, is_mammal
 const getAllSpecies = (req, res, next) => {
   db.any('SELECT * FROM species').then (species => {
     res.status(200)
@@ -21,7 +21,7 @@ const getAllSpecies = (req, res, next) => {
 }
 
 
-// get /:id
+// get /:id    name, is_mammal
 const getSingleSpecies = (req, res, next) => {
   let speciesId = parseInt(req.params.id);
   db.one('SELECT * FROM species WHERE id =$1', [speciesId])
@@ -44,7 +44,7 @@ const getSingleSpecies = (req, res, next) => {
   })
 }
 
-//post  /
+//post  /        name, is_mammal
 const addNewSpecies = (req, res, next) => {
   db.none(
     'INSERT INTO species(name, is_mammal) VALUES (${newName}, ${newBoolean})', {

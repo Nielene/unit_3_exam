@@ -1,6 +1,6 @@
 const {db} = require('./index.js');
 
-// get /
+// get /      species_id, nickname
 const getAllAnimals = (req, res, next) => {
   db.any('SELECT * FROM animals').then(animals => {
     res.status(200)
@@ -20,7 +20,7 @@ const getAllAnimals = (req, res, next) => {
   })
 }
 
-// get /:id
+// get /:id     species_id, nickname
 const getSingleAnimal = (req, res, next) => {
   let animalId = parseInt(req.params.id);
   db.one('SELECT * FROM animals WHERE id=$1', [animalId])
