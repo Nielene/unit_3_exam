@@ -20,11 +20,11 @@ app.use('/taggings', taggings);
 app.use('/sightings', sightings);
 
 app.get('/', (req, res) => {
-  res.send('This is the HOMEPAGE!');
+  res.json('This is the HOMEPAGE!');
 });
 
 app.get('*', (req, res) => {
-  res.send('🙀 😪 😲 Cats cry; Children weep ... for your error.')
+  res.json('🙀 😪 😭 Cats cry; Children weep ... for your error.')
 });
 
 const port = 3000;
